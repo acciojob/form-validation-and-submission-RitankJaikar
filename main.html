@@ -51,11 +51,21 @@
     <input type="email" id="email" name="email" required>
     <div id="emailError" class="error"></div><br>
 
+	<label for="email">Password:</label><br>
+    <input type="password" id="password" name="password" required>
+    <div id="passwordError" class="error"></div><br>
+
+	<select name="gender" id="gender">
+	  <option value="male">Male</option>
+	  <option value="female">Female</option>
+	  <option value="others">Others</option>
+	</select>
+
     <label>
       <input type="checkbox" id="terms" name="terms"> I accept the terms and conditions
     </label><br><br>
 
-    <button type="submit" id="submitBtn" disabled>Submit</button>
+    <button type="submit" id="submitBtn">Submit</button>
   </form>
 </body>
 </html>
