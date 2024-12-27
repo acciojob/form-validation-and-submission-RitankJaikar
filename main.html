@@ -1,16 +1,61 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation and Submission</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+  <script>
+    function validateForm() {
+      const form = document.getElementById("myForm");
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const terms = document.getElementById("terms").checked;
+      const submitButton = document.getElementById("submitBtn");
+
+      // Check if all fields are valid
+      const isFormValid = name && email && terms;
+
+      // Enable or disable the submit button
+      submitButton.disabled = !isFormValid;
+
+      // Show error messages
+      document.getElementById("nameError").innerText = name ? "" : "Name is required.";
+      document.getElementById("emailError").innerText = email ? "" : "Email is required.";
+    }
+
+    function handleSubmit(event) {
+      // Validate form again before submission
+      validateForm();
+
+      // Prevent default submission if any validation fails
+      const submitButton = document.getElementById("submitBtn");
+      if (submitButton.disabled) {
+        event.preventDefault();
+      }
+    }
+  </script>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <form id="myForm" action="submit-form.php" method="POST" oninput="validateForm()" onsubmit="handleSubmit(event)">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required>
+    <div id="nameError" class="error"></div><br>
 
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required>
+    <div id="emailError" class="error"></div><br>
+
+    <label>
+      <input type="checkbox" id="terms" name="terms"> I accept the terms and conditions
+    </label><br><br>
+
+    <button type="submit" id="submitBtn" disabled>Submit</button>
+  </form>
 </body>
-
 </html>
