@@ -10,7 +10,8 @@ function validateForm() {
   const isFormValid = name && email && terms;
 
   // Enable or disable the submit button
-  submitButton.disabled = !isFormValid;
+  //submitButton.disabled = !isFormValid;
+  submitButton.disabled = false;
 
   // Show error messages
   document.getElementById("nameError").innerText = name ? "" : "Name is required.";
