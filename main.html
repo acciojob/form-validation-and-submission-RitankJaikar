@@ -10,39 +10,9 @@
       font-size: 14px;
     }
   </style>
-  <script>
-    function validateForm() {
-      const form = document.getElementById("myForm");
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const terms = document.getElementById("terms").checked;
-      const submitButton = document.getElementById("submitBtn");
-
-      // Check if all fields are valid
-      const isFormValid = name && email && terms;
-
-      // Enable or disable the submit button
-      submitButton.disabled = !isFormValid;
-
-      // Show error messages
-      document.getElementById("nameError").innerText = name ? "" : "Name is required.";
-      document.getElementById("emailError").innerText = email ? "" : "Email is required.";
-    }
-
-    function handleSubmit(event) {
-      // Validate form again before submission
-      validateForm();
-
-      // Prevent default submission if any validation fails
-      const submitButton = document.getElementById("submitBtn");
-      if (submitButton.disabled) {
-        event.preventDefault();
-      }
-    }
-  </script>
 </head>
 <body>
-  <form id="myForm" action="submit-form.php" method="POST" oninput="validateForm()" onsubmit="handleSubmit(event)">
+  <form id="myForm" action="submit-form.php" method="POST" onsubmit="return handleSubmit(event)">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required>
     <div id="nameError" class="error"></div><br>
@@ -51,15 +21,15 @@
     <input type="email" id="email" name="email" required>
     <div id="emailError" class="error"></div><br>
 
-	<label for="email">Password:</label><br>
+    <label for="password">Password:</label><br>
     <input type="password" id="password" name="password" required>
     <div id="passwordError" class="error"></div><br>
 
-	<select name="gender" id="gender">
-	  <option value="male">Male</option>
-	  <option value="female">Female</option>
-	  <option value="others">Others</option>
-	</select><br><br>
+    <select name="gender" id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="others">Others</option>
+    </select><br><br>
 
     <label>
       <input type="checkbox" id="terms" name="terms"> I accept the terms and conditions
