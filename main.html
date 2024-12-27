@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-  <form id="myForm" action="submit-form.php" method="POST" onsubmit="return handleSubmit(event)">
+  <form id="myForm" action="submit-form.php" method="POST" oninput="validateForm()" onsubmit="handleSubmit(event)">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required>
     <div id="nameError" class="error"></div><br>
@@ -21,15 +21,15 @@
     <input type="email" id="email" name="email" required>
     <div id="emailError" class="error"></div><br>
 
-    <label for="password">Password:</label><br>
+	<label for="email">Password:</label><br>
     <input type="password" id="password" name="password" required>
     <div id="passwordError" class="error"></div><br>
 
-    <select name="gender" id="gender">
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="others">Others</option>
-    </select><br><br>
+	<select name="gender" id="gender">
+	  <option value="male">Male</option>
+	  <option value="female">Female</option>
+	  <option value="others">Others</option>
+	</select><br><br>
 
     <label>
       <input type="checkbox" id="terms" name="terms"> I accept the terms and conditions
